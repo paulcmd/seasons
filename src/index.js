@@ -2,6 +2,9 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import "semantic-ui-css/semantic.min.css"
 import SeasonDisplay from './SeasonDisplay'
+import ErrorMessage from './ErrorMessage'
+import Spinner from  './Spinner'
+
 
 
 class App extends React.Component {
@@ -19,7 +22,7 @@ class App extends React.Component {
     render() {
 
         if (this.state.errorMessage && !this.state.lat) {
-            return <div>Error: {this.state.errorMessage}</div>
+            return <div><ErrorMessage errorMessage={this.state.errorMessage}/> </div>
         }
 
 
@@ -28,7 +31,7 @@ class App extends React.Component {
         }
 
 
-        return <div> Loading! </div>
+        return <div> <Spinner spinnerMessage={'Please accept locaton request'}/> </div>
 
 
     }
